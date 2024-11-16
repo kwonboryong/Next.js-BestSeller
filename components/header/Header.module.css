@@ -1,0 +1,21 @@
+.container {
+  height: 70px;
+  background-color: rgb(211, 211, 211);
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+
+  .home {
+    font-size: 22px;
+
+    padding-left: 15px;
+  }
+
+  .about {
+    font-size: 22px;
+    text-align: end;
+
+    padding-right: 15px;
+  }
+}
