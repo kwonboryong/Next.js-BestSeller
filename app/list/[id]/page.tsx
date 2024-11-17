@@ -5,10 +5,9 @@ type IParams = {
   id: string;
 };
 
-export async function generateMetadata(props: { params: IParams }) {
-  const params = await props.params;
-  const id = params.id;
-  const categoryData = await getBooksByCategory(id);
+export async function generateMetadata({ params }: { params: IParams }) {
+  const { id } = params;
+  const categoryData = await getBooksByCategory(id); 
   
   const categoryName = categoryData.results?.display_name || 'Books';
   
