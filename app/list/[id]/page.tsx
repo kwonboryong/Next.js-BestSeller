@@ -1,15 +1,26 @@
-import styles from "../../../styles/Detail.module.css";
-import { Metadata } from "next";
+import styles from "./Detail.module.css";
+import DetailCard, { getBooksByCategory } from "../../../components/detailCard/DetailCard";
 
-export const metadata: Metadata = {
-  title: "About"
-}
+type IParams = {
+  id: string;
+};
 
-export default function Home() {
+export default async function Detail({ params }: { params: IParams }) {
+  const { id } = params; 
+  console.log(id); 
+
+  const categoryData = await getBooksByCategory(id); 
+  const books = categoryData.results?.books || [];
+
   return (
-    <div >
-      <h2>$카테고리 Books</h2>
-      <p>베스트셀러 각 카테고리 별 책의 리스트</p>
+    <div className={styles.container}>
+      <h2 className={styles.title}>{categoryData.results?.display_name} Books</h2>
+
+      <div className={styles.listBox}>
+        {books.map((book) => (
+          <DetailCard key={book.primary_isbn13} book={book} />
+        ))}
+      </div>
     </div>
   );
 }
