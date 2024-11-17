@@ -1,12 +1,13 @@
 import styles from "./Detail.module.css";
 import DetailCard, { getBooksByCategory } from "../../../components/detailCard/DetailCard";
 
-type IParams = {
+type IParams = Promise<{
   id: string;
-};
+}>;
 
-export async function generateMetadata({ params }: { params: IParams }) {
-  const { id } = params;
+export async function generateMetadata(props: { params: IParams }) {
+  const params = await props.params;
+  const id = params.id;
   const categoryData = await getBooksByCategory(id); 
   
   const categoryName = categoryData.results?.display_name || 'Books';
@@ -16,8 +17,9 @@ export async function generateMetadata({ params }: { params: IParams }) {
   };
 }
 
-export default async function Detail({ params }: { params: IParams }) {
-  const { id } = params; 
+export default async function Detail(props: { params: IParams }) {
+  const params = await props.params;
+  const id = params.id;
   const categoryData = await getBooksByCategory(id); 
   const books = categoryData.results?.books || [];
 
