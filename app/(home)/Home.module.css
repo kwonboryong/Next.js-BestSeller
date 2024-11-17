@@ -1,19 +1,17 @@
 .container {
-  /* border: 1px solid red; */
 
   .title {
-    font-size: 30px;
-    font-weight: 500;
+    font-size: 33px;
+    font-weight: 800;
     text-align: center;
 
-    padding: 38px;
+    padding: 44px;
   }
 
   .listBox {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
-
-    border: 1px solid blue;
-
+    margin-bottom: 30px;
   }
 }

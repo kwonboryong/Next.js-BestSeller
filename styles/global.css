@@ -135,6 +135,7 @@ body {
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+    user-select: none;
   /* padding-top: 150px; */
   /* background-color: black; */
   /* color: white; */
@@ -148,5 +149,4 @@ a {
 
 a:hover {
   color: red;
-  /* 수정 */
 }
